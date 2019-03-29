@@ -1,6 +1,7 @@
 import sys
 import ast
 import astunparse
+from util import get_pretty_docstring, escape_control_string
 
 
 def give_hint():
@@ -10,26 +11,6 @@ def give_hint():
           'out-class-declarations-file out-class-descriptions-file out-class-metadata-file', file=sys.stderr)
     print('in-files-list', file=sys.stderr)
     sys.exit(-1)
-
-
-def get_pretty_docstring(doc_str):
-    """整理docstring"""
-    doc_str = doc_str.replace("DCQT", "DCQTDCQT").replace("DCNL", "DCQTDCNL")
-    doc_str = doc_str.replace("'", "\\'")
-    rv_list = []
-    for line in doc_str.split('\n'):
-        line = line.strip()
-        # 如果这一行为空或者都是空字符
-        if line == "" or (not any([c.isalnum() for c in line])):
-            continue
-        rv_list.append(line)
-    unevaluated_pretty_docstring = "'" + " DCNL ".join(rv_list) + "'"
-    return unevaluated_pretty_docstring
-
-
-def escape_control_string(line):
-    """转义控制字符"""
-    return line.replace("DCQT", "DCQTDCQT").replace("DCNL", "DCQTDCNL")
 
 
 def process_class(node, out_class_decl_fd, out_class_desc_fd, out_class_meta_fd, input_filename,
