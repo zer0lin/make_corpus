@@ -65,7 +65,7 @@ def new(repos, username, search_query, min_stars, language, limit, output_direct
         description = result.repository.description
         clone_url = result.repository.clone_url
         num_stars = result.repository.watchers
-        num_forks = result.repository.fork_count
+        num_forks = result.repository.forks_count
         created_at = result.repository.created_at
         pushed_at = result.repository.pushed_at
 
@@ -75,17 +75,17 @@ def new(repos, username, search_query, min_stars, language, limit, output_direct
             print("Skipping {0}, it has been cloned.".format(repo))
         else:
             repos.append(repo)
-            outfile = open(db_file, "wb", encoding="UTF-8")
+            outfile = open(db_file, "wb")
             pickle.dump(repos, outfile)
             outfile.close()
 
-        start_multi_thread(output_directory, thread_num)
+        start_multi_thread(thread_num, output_directory)
 
 
 def create_repos(db_file):
     repos = []
     if os.path.exists(db_file):
-        infile = open(db_file, "rb", encoding="UTF-8")
+        infile = open(db_file, "rb")
         repos = pickle.load(infile)
         infile.close()
     return repos
@@ -101,10 +101,10 @@ def give_download_hint():
     print("Usage:\n\tscraper.py [parameters]\n")
 
     print("Required Parameters:")
-    print("\t-m --mode\t\t\t'new' to generate new corpus or 'recreate' to clone corpus from db_file")
+    print("\t-m --mode\t\t\t'new' to generate 'new' corpus or 'recreate' to clone corpus from db_file")
     print("\t-o --out_dir\t\t\tDirectory into which repos are cloned")
     print("\t-d --db_file\t\t\tList of repos to clone in 'recreate' mode or save in 'new' mode")
-    print("\t-u --username\t\tGitHub username")
+    print("\t-u --user\t\t\tGitHub username")
 
     print()
     print("Optional Parameters:\n")
@@ -113,7 +113,7 @@ def give_download_hint():
     print("\t-r --thread_num\t\t\tNumber of thread number . DEFAULT 5")
     print("\t-s --search\t\t\tSearch query used in 'new' mode. DEFAULT '<blank>'")
     print("\t-t --stars\t\t\tMinimum number of stars threshold. Used in 'new' mode to search. DEFAULT 100")
-    print("\t-l --language\t\tRepo language, used in 'new' mode to search. DEFAULT 'python'")
+    print("\t-l --language\t\t\tRepo language, used in 'new' mode to search. DEFAULT 'python'")
 
 
 def main(argv):

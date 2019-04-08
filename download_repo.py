@@ -24,7 +24,7 @@ def new(repos, username, search_query, min_stars, language, limit, output_direct
         description = result.repository.description
         clone_url = result.repository.clone_url
         num_stars = result.repository.watchers
-        num_forks = result.repository.fork_count
+        num_forks = result.repository.forks_count
         created_at = result.repository.created_at
         pushed_at = result.repository.pushed_at
 
@@ -36,7 +36,7 @@ def new(repos, username, search_query, min_stars, language, limit, output_direct
                 repo.clone(output_directory)
                 repos.append(repo)
                 print("Cloned {0}".format(repo.details()))
-                outfile = open(db_file, "wb", encoding="UTF-8")
+                outfile = open(db_file, "wb")
                 pickle.dump(repos, outfile)
                 outfile.close()
             except Exception as e:
@@ -46,7 +46,7 @@ def new(repos, username, search_query, min_stars, language, limit, output_direct
 def create_repos(db_file):
     repos = []
     if os.path.exists(db_file):
-        infile = open(db_file, "rb", encoding="UTF-8")
+        infile = open(db_file, "rb")
         repos = pickle.load(infile)
         infile.close()
     return repos

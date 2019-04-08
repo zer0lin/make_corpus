@@ -31,6 +31,9 @@ class PyRepo:
         git = repo.git
         git.checkout(self.last_commit_sha)
 
+    def __hash__(self):
+        return hash(self.clone_url)
+
     @property
     def clone_url(self):
         return self._clone_url
