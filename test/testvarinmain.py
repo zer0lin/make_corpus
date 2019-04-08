@@ -1,4 +1,7 @@
 def foo():
+    global x1
+    print(x1)
+    x1 = 5
     print(x1)
 
 
