@@ -79,7 +79,7 @@ def new(repos, username, search_query, min_stars, language, limit, output_direct
             pickle.dump(repos, outfile)
             outfile.close()
 
-        start_multi_thread(thread_num, output_directory)
+    start_multi_thread(thread_num, output_directory)
 
 
 def create_repos(db_file):
