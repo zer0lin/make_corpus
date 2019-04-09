@@ -1,5 +1,6 @@
 import os
 from git import Repo
+import shutil
 
 
 class PyRepo:
@@ -25,6 +26,12 @@ class PyRepo:
         target = os.path.join(output_directory, self.full_name)
         repo = Repo.clone_from(self.clone_url, target)
         self._last_commit_sha = repo.head.object.hexsha
+
+    def reject(self, output_directory):
+        # fullname = 'tensorflow/models'
+        target = os.path.join(output_directory, self.full_name)
+        # 删除这个目录下的所有文件和文件夹
+        shutil.rmtree(target)
 
     def checkout(self, output_directory):
         repo = Repo.clone_from(self.clone_url, os.path.join(output_directory, self.name))
