@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45a6500c-7f32-4ac8-94f2-1eaf4a00ce0d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/download_repo_mutithread.py" beforeDir="false" afterPath="$PROJECT_DIR$/download_repo_mutithread.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/download_repo_mutithread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
-              <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+            <state relative-caret-position="462">
+              <caret line="34" column="45" lean-forward="true" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -32,7 +32,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/py_repo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
+            <state relative-caret-position="567">
               <caret line="29" column="14" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="14" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -297,6 +297,7 @@
       <workItem from="1554799932559" duration="664000" />
       <workItem from="1554805376709" duration="4045000" />
       <workItem from="1554838150437" duration="878000" />
+      <workItem from="1554886095837" duration="24000" />
     </task>
     <task id="LOCAL-00001" summary=":memo:Add README.md.">
       <created>1553428012732</created>
@@ -309,12 +310,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66508000" />
+    <option name="totallyTimeSpent" value="66532000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1663113" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16791044" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -591,16 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/download_repo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/testremoverecur.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -608,9 +599,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/download_repo_mutithread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="34" column="45" lean-forward="true" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/py_repo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
+        <state relative-caret-position="567">
           <caret line="29" column="14" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="14" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -618,10 +619,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/download_repo_mutithread.py">
+    <entry file="file://$PROJECT_DIR$/download_repo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+        <state relative-caret-position="399">
+          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>

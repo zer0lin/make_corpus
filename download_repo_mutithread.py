@@ -41,7 +41,7 @@ def do_clone(output_directory):
                 lock.acquire()
                 print("Failed to clone {0} due to {1}".format(to_use_key, e))
                 repo_list_dict[to_use_key] = False
-                to_use_key.reject()
+                to_use_key.reject(output_directory)
                 lock.release()
 
 
