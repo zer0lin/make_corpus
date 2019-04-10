@@ -31,7 +31,9 @@ class PyRepo:
         # fullname = 'tensorflow/models'
         target = os.path.join(output_directory, self.full_name)
         # 删除这个目录下的所有文件和文件夹
-        shutil.rmtree(target)
+
+        if os.path.exists(target):
+            shutil.rmtree(target)
 
     def checkout(self, output_directory):
         repo = Repo.clone_from(self.clone_url, os.path.join(output_directory, self.name))
