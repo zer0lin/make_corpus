@@ -15,6 +15,7 @@ class PyRepo:
         self._num_forks = num_forks
         self._created_at = created_at
         self._pushed_at = pushed_at
+        self._cloned_repo = None
 
     def __str__(self):
         return self.name
@@ -24,10 +25,12 @@ class PyRepo:
 
     def clone(self, output_directory):
         target = os.path.join(output_directory, self.full_name)
-        repo = Repo.clone_from(self.clone_url, target)
-        self._last_commit_sha = repo.head.object.hexsha
+        self._cloned_repo = Repo.clone_from(self.clone_url, target)
+        self._last_commit_sha = self._cloned_repo.head.object.hexsha
 
     def reject(self, output_directory):
+        if self._cloned_repo:
+            self._cloned_repo.close()
         # fullname = 'tensorflow/models'
         target = os.path.join(output_directory, self.full_name)
         # 删除这个目录下的所有文件和文件夹
@@ -36,8 +39,8 @@ class PyRepo:
             shutil.rmtree(target, True)
 
     def checkout(self, output_directory):
-        repo = Repo.clone_from(self.clone_url, os.path.join(output_directory, self.name))
-        git = repo.git
+        self._cloned_repo = Repo.clone_from(self.clone_url, os.path.join(output_directory, self.name))
+        git = self._cloned_repo.git
         git.checkout(self.last_commit_sha)
 
     def __hash__(self):
