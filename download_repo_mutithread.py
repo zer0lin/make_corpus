@@ -76,9 +76,9 @@ def new(repos, username, search_query, min_stars, language, limit, output_direct
             print("Skipping {0}, it has been cloned.".format(repo))
         else:
             repos.append(repo)
-            outfile = open(db_file, "wb")
-            pickle.dump(repos, outfile)
-            outfile.close()
+    outfile = open(db_file, "wb")
+    pickle.dump(repos, outfile)
+    outfile.close()
 
     start_multi_thread(thread_num, output_directory)
 
