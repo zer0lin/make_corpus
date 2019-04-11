@@ -33,7 +33,7 @@ class PyRepo:
         # 删除这个目录下的所有文件和文件夹
 
         if os.path.exists(target):
-            shutil.rmtree(target)
+            shutil.rmtree(target, True)
 
     def checkout(self, output_directory):
         repo = Repo.clone_from(self.clone_url, os.path.join(output_directory, self.name))
