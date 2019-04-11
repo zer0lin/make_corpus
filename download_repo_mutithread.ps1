@@ -1,0 +1,1 @@
+python download_repo_mutithread.py --mode=new --out_dir=../down_repos --db_file=../down_repos/repos.pkl --user=huyan00@hotmail.com --thread_num=20
