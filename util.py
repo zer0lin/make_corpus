@@ -43,3 +43,15 @@ def reduce_ident(line, ident_separator=" "):
     n_space = len(line) - len(line_all_stripped)
     n_ident = n_space // 4
     return (ident_separator * n_ident) + line_all_stripped
+
+
+def check_chinese_char(in_str):
+    """判断是否含有中文字符
+
+    :param in_str: 输入字符串
+    :return: 包含返回True
+    """
+    import re
+    zh_pattern = re.compile(u"[\u4e00-\u9fa5]+", re.S)
+    is_match = zh_pattern.search(in_str)
+    return is_match is not None
