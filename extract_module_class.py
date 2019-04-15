@@ -38,7 +38,11 @@ def process_module(in_fd, out_module_desc_fd, out_module_meta_fd, out_class_decl
                    out_class_meta_fd, input_filename):
 
     module_str = in_fd.read()
-    module_ast = ast.parse(module_str)
+    try:
+        module_ast = ast.parse(module_str)
+    except SyntaxError:
+        # Python3不兼容Python2的语法，若输入文件中包含Python2的语法，则会出现语法错误。直接结束。
+        return
     doc_str = ast.get_docstring(module_ast)
     if doc_str is not None:
         pretty_docstring = get_pretty_docstring(doc_str)
