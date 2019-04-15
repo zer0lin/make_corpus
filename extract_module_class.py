@@ -73,9 +73,11 @@ def workflow():
     class_meta_fd = open(class_meta_filename, "w", encoding="UTF-8")
     for line in sys.stdin:
         input_filename = line.strip()
-        process_module(open(input_filename, encoding="UTF-8"), module_description_fd, module_meta_fd, class_decl_fd,
-                       class_description_fd, class_meta_fd, input_filename)
-
+        try:
+            process_module(open(input_filename, encoding="UTF-8"), module_description_fd, module_meta_fd, class_decl_fd,
+                           class_description_fd, class_meta_fd, input_filename)
+        except OSError:
+            continue
     print('Done.')
 
 

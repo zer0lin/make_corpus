@@ -90,8 +90,12 @@ def workflow():
     meta_fd = open(meta_filename, "w", encoding="UTF-8")
     for line in sys.stdin:
         input_filename = line.strip()
-        process_module(open(input_filename, encoding="UTF-8"), func_decl_fd, description_fd, bodies_fd, meta_fd,
-                       input_filename)
+        try:
+            # 可能会出问题，别的平台可能不会出问题。Windows用powershell要try起来
+            process_module(open(input_filename, encoding="UTF-8"), func_decl_fd, description_fd, bodies_fd, meta_fd,
+                           input_filename)
+        except OSError:
+            continue
 
     print('Done.')
 
