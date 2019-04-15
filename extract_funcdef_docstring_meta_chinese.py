@@ -66,7 +66,10 @@ def process_module(in_fd, out_func_decl_fd, out_description_fd, out_bodies_fd, o
     :param input_filename: 输入文件的名字
     :return:
     """
-    module_str = in_fd.read()
+    try:
+        module_str = in_fd.read()
+    except UnicodeDecodeError:
+        return
     try:
         module_ast = ast.parse(module_str)
     except SyntaxError:
