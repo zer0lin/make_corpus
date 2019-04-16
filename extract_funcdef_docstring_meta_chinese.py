@@ -25,7 +25,7 @@ def process_function(node, out_func_decl_fd, out_description_fd, out_bodies_fd, 
     :return:
     """
     doc_str = ast.get_docstring(node)
-    if doc_str is None:
+    if doc_str is None and not check_chinese_char(doc_str):
         return
     # 处理字符串中的转义字符
     inplace_escape_spaces_in_strings(node)
@@ -40,7 +40,7 @@ def process_function(node, out_func_decl_fd, out_description_fd, out_bodies_fd, 
     funcdef = " DCNL ".join([escape_control_string(line) for line in unparsed_funcdef])
     processed_body = []
     for line in unparsed_body:
-        if line == "" and not check_chinese_char(line):
+        if line == "":
             continue
         line = escape_control_string(line)
         line = reduce_ident(line, ident_separator=" DCSP ")
