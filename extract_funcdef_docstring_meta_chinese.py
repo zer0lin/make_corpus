@@ -75,6 +75,8 @@ def process_module(in_fd, out_func_decl_fd, out_description_fd, out_bodies_fd, o
     except SyntaxError:
         # Python3不兼容Python2的语法，若输入文件中包含Python2的语法，则会出现语法错误。直接结束。
         return
+    except ValueError:
+        return
     for node in module_ast.body:
         if isinstance(node, ast.FunctionDef):
             process_function(node, out_func_decl_fd, out_description_fd, out_bodies_fd, out_meta_fd, input_filename)
