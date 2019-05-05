@@ -1,4 +1,5 @@
 import ast
+import re
 
 
 def inplace_escape_spaces_in_strings(node):
@@ -20,11 +21,15 @@ def get_pretty_docstring(doc_str):
     doc_str = doc_str.replace("DCQT", "DCQTDCQT").replace("DCNL", "DCQTDCNL")
     doc_str = doc_str.replace("'", "\\'")
     rv_list = []
+    args_pattern = re.compile(u"(Arguments)|(Args)|(:param)")
     for line in doc_str.split('\n'):
         line = line.strip()
         # 如果这一行为空或者都是空字符
         if line == "" or (not any([c.isalnum() for c in line])):
             continue
+        is_match = args_pattern.search(line)
+        if is_match is not None:
+            break
         rv_list.append(line)
     unevaluated_pretty_docstring = "'" + " DCNL ".join(rv_list) + "'"
     return unevaluated_pretty_docstring
@@ -51,7 +56,6 @@ def check_chinese_char(in_str):
     :param in_str: 输入字符串
     :return: 包含返回True
     """
-    import re
     zh_pattern = re.compile(u"[\u4e00-\u9fa5]+", re.S)
     is_match = zh_pattern.search(in_str)
     return is_match is not None
