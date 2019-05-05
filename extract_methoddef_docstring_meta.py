@@ -40,6 +40,8 @@ def process_function(node, out_func_decl_fd, out_description_fd, out_bodies_fd, 
     pretty_docstring = get_pretty_docstring(doc_str)
     funcdef = " DCNL ".join([escape_control_string(line) for line in unparsed_funcdef])
     processed_body = []
+    if len(unparsed_body) > 10:
+        return
     for line in unparsed_body:
         if line == "":
             continue
