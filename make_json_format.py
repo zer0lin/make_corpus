@@ -19,7 +19,7 @@ def process(func_decl_fd, description_fd, bodies_fd, meta_fd, out_all_fd):
     print("[", file=out_all_fd)
     for i in range(0, list_len):
         temp_dict = {"decl": decl_list[i], "desc": desc_list[i], "body": bodies_list[i], "meta": meta_list[i]}
-        temp_s = json.dumps(temp_dict)
+        temp_s = json.dumps(temp_dict, ensure_ascii=False)
         print(temp_s + ",", file=out_all_fd)
     print("]", file=out_all_fd)
 
